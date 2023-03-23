@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="mine.js"></script>
+    
+    <style>
+.user{
+  box-shadow:  -3px -2px 5px 2px rgb(253, 253, 253), 0px 0px 10px 2px rgb(37, 221, 67) inset; }
+
+
+
+      form{
+        padding-left: 20px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-right: 15px;
+        border-right: 5px double black;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+width: 90%;
+height: 100%;     
+background-color: rgb(110, 110, 110);
+
+   }
+      body{
+padding: 0px;
+margin: 0px;
+display: flex;
+margin-top: 30px;
+        }
+      label{
+        padding: 10px;
+        width: 40%; 
+        color: rgb(104, 28, 15);
+        font-weight: bolder;
+        margin-right: 15px;
+        margin-left: 15px;
+      }
+      
+      .kategoria{
+display: flex;
+margin-right: 15px;
+margin-left: 15px;
+padding: 15px; 
+padding-bottom: 15px;
+box-shadow: 3px 2px 4px 0px  rgb(65, 63, 63);
+width: 60%;
+align-items: center;
+justify-content: space-around;      
+}
+
+
+      .kategoria samp{
+
+      display: flex;
+flex-direction: column;
+align-items: center;
+flex-wrap: nowrap;
+      }
+
+      input[type="text"] {
+        background:none;
+        outline: none;
+        box-shadow: 3px 2px 4px 0px rgb(65, 63, 63);
+        -webkit-appearance: none;
+        border: none;
+        border-radius: 5px;
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 10px;
+        width: 60%;
+        cursor:pointer;
+      }
+      ::placeholder { 
+        color: rgb(65, 63, 63); 
+        font-weight: bolder; 
+        font-size:medium; 
+        opacity: 1; 
+        padding-left: 5px;
+      } 
+
+
+      
+      input[type="text"]:focus {
+        border-radius: 0px;
+        box-shadow: 1px 1px 2px 0px  rgb(65, 63, 63) inset;
+        border: 0px;
+      }
+
+
+
+input[type="checkbox"] {
+margin: 0px;
+margin-bottom: 10px;
+-webkit-appearance: none;
+width: 25px;
+height: 25px;
+border-radius: 100%;
+outline: none;
+cursor: pointer;
+box-shadow: 0px 0px 5px 1px yellow;
+transition: 1s ease-in-out;
+border: 3px transparent rgb(63, 165, 42);
+}
+
+input[type="checkbox"]:checked {
+box-shadow: none;
+transform: rotate(40deg);
+width: 15px;
+height: 25px;
+border-top: 0px transparent brown;
+border-left: 0px transparent brown;
+border-right: 6px solid green;
+border-bottom: 6px solid green;
+border-radius: 0px;
+
+
+
+
+}
+
+textarea[name="agwera"] {
+        background:none;
+        outline: none;
+        box-shadow: 3px 2px 4px 0px  rgb(65, 63, 63);
+        -webkit-appearance: none;
+        border: none;
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 5px;
+        width: 60%;
+        cursor: pointer;
+}
+textarea[name="agwera"]:focus{
+border-radius: 0px;
+box-shadow: 1px 1px 2px 0px  rgb(65, 63, 63) inset;
+border: 0px;
+}
+      
+
+      .line{
+margin: 5px;
+display: flex;
+width: 100%;
+box-shadow: 0px -3px 3px 0px rgb(65, 63, 63) ;
+padding-top: 5px;
+padding-bottom: 5px;
+align-items: center;
+justify-content: space-between;
+flex-wrap: nowrap;           
+}
+
+h3 {
+padding: 0px;
+margin: 0px;
+text-align: center;
+width: 100%;
+color: rgb(63, 20, 4);
+}
+button{
+padding: 15px;
+background: none;
+border: none;
+font-size:large;
+font-weight: bolder;
+padding-left: 50px;
+padding-right: 50px;
+box-shadow: 3px 3px 2px 1px black;
+cursor: pointer;
+margin-top: 15px;
+margin-left: 40%;
+transition: .5s ease-in-out;
+}
+button:hover{
+box-shadow: 0px 0px 2px 1px black, 1px 1px 1px 0.5px black inset;
+transform: scale(1.05);
+
+color: rgb(70, 21, 12);
+font-size: larger;
+}
+button:active{
+box-shadow: 0px 0px 2px 1px black, 0px 0px 1px 0.5px black inset;
+}
+.forms{
+  width: 70%;
+    float: right;
+    height: 100%;
+  }
+.aside{
+display: flex;
+width: 30%;
+height: 100%;
+float: left;
+justify-content: flex-end;
+align-items: center;
+flex-wrap: wrap;
+}
+.aside ul{
+border-left: 5px double black;
+border-radius: 20px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+padding: 0px;
+padding-bottom: 5px;
+padding-top: 5px;
+border-bottom: 2px solid black;
+border-top: 2px solid black;
+margin: 0px;
+list-style: none;
+height: 100%;
+width: 90%;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+background-color: rgb(120, 120, 120);
+}
+
+.aside ul li{
+height: 15%;
+padding: 8px;
+padding-top: 0;
+padding-bottom: 0px;
+font-size: larger;
+font-weight: bolder;
+width: 100%;
+display: flex;
+align-items: center;
+transition: 1.5s ease-in-out;
+
+  }
+  .aside ul li:hover{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  margin-right: -15px;
+  margin-left: 15px;
+  background-color: rgb(110, 110, 110);
+  z-index: 2;
+  cursor: pointer;
+  }
+
+
+  .content{
+    padding-bottom: 30px;
+    background: none;
+    box-shadow: -1px -3px 1px 0px rgb(5 3 3);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+
+
+  </style>
+<style>
+
+
+</style>
+
+</head>
+<body onload="slide(); lamp();">
+    <header id="header">
+
+      <div id="slide_line" class="slide_line"> </div>
+
+<div class="head_icons">
+
+            <div class="lang">
+            <img id="lang" src="img/language.svg">
+              <img src="img/GEO.webp"> 
+              <img src="img/trt.png"> 
+              <img src="img/usa.png">
+            </div>
+      <a href="add_post.html">
+              <div  class="user">
+                <img src="img/person.svg">
+              </div>
+      </a>
+
+    <div name="lamp" id="lamp" class="lamp1">
+    <img src="img/light.svg">
+    </div>
+
+</div>
+<a href="index.html"><img  id = "logo" src="img/logo.png"></a>
+
+<nav>
+            <ul class="contact">
+                <li><samp>rartmeladze@gmail.com</samp></li>
+                <li><samp>(+995) 595 03-56-68</samp></li>
+            </ul>
+            <ul>
+                <a href="index.html"><li><samp>მთავარი</samp></li></a>
+                <a href="gallery.html"><li><samp>გალერია</samp></li></a>
+                <a href="news.html"><li><samp>სიახლე</samp></li></a>
+                <a href="contact.html"><li><samp>კონტაქტი</samp></li></a>
+            </ul>
+        </nav>
+    </header>
+
+<section>
+<div class="headline">
+    <!-- <div class="dzebna">
+        <input type="search" placeholder="ძებნა...">
+        <img src="img/search.svg">
+    </div>
+    <div class="dzebna">
+        <img src="img/category.svg">
+
+        <select>
+    <option value="all">აირჩიე სეზონი</option>
+    <option value="N1">ზამთარი</option>
+    <option value="N2">ზაფხული</option>
+    </select>
+</div>
+<div class="dzebna">
+    <img src="img/category.svg">
+
+        <select>
+            <option value="red">აირჩიე ლოკაცია</option>
+            <option value="red">მთა</option>
+            <option value="green">ზღვა</option>
+        </select>
+        </div> -->
+</div>
+
+<section id="content_add_post" class="content">
+
+
+  <div class="aside">
+    <ul>
+      <Li>ახალი ჩანაწერის დამატება</Li>
+      <Li>არსებული ჩანაწერის ჩასწორება</Li>
+      <Li>ჩანაწერის წაშლა</Li>
+      <Li>მომხმარებლის დამატება</Li>
+      <Li>მომხმარებლის წაშლა</Li>
+      <Li>ბვერდების განლაგების ცვლილება</Li>
+    </ul>
+    </div>
+    
+    
+    
+    <div class="forms">
+          <form action="api.php" method="POST" enctype="multipart/form-data">
+            <div class="line">
+              <h3>დაამატეთ ახალი ჩანაწერი</h3>
+    </div>
+    
+            <div class="line">
+            <label for="text">პოსტის სახელი:</label>
+            <input type="text" name="name" id="name" placeholder="შეიყვანე სახელი">
+            </div>
+    <div class="line">
+            <label for="text">კატეგორია N1:</label>
+            <idv class="kategoria">
+              <samp><input type="checkbox" name="all" value="all"> all </samp>
+              <samp><input type="checkbox" name="მთა" value="მთა"> მთა </samp>
+              <samp><input type="checkbox" name="ზღვა" value="ზღვა"> ზღვა </samp>
+                               </idv>
+              
+            <!-- <input type="text" name="mile" id="mile"> -->
+            </div>
+            <div class="line">
+              <label for="text">კატეგორია N2:</label>
+              <idv class="kategoria">
+    <samp><input type="checkbox" name="all" value="all"> all </samp>
+    <samp><input type="checkbox" name="მთა" value="მთა"> ზამთარი </samp>
+    <samp><input type="checkbox" name="ზღვა" value="ზღვა"> ზაფხული </samp>
+                     </idv>
+            <!-- <input type="text" name="age" id="age"> -->
+            </div>
+    <div class="line">
+            <label for="my-textarea">მოკლე აღწერა:</label>
+    <textarea  type="text" name="agwera" id="user" rows="4" cols="50"  placeholder="ჩანაწერის აღწერა დეტალური მონაცემები მომხმარებლებისთვის...">
+    </textarea>
+            </div>
+    <div class="line">
+            <label for="photo">აირჩიეთ ფოტო:</label>
+            <input type="file" name="photo" id="photo">
+            </div>
+            <div class="line">
+    
+              <button type="submit">შენახვა</button>
+              </div>
+            </form>
+    </div>             
+    
+
+
+
+</section>
+</section>
+
+<footer>
+
+</footer>
+<script>
+</script>
+<script src="mine.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
