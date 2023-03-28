@@ -163,10 +163,9 @@ cursor: pointer;
     align-items: center;
     justify-content: center;
     box-shadow: 2px 2px 3px 1px black;
-        }
-.close_icon:hover{
-    box-shadow: -1px -2px 1px 1px black;
-}
+    }
+
+.close_icon:hover{ box-shadow: -1px -2px 1px 1px black; }
 
 
 
@@ -187,6 +186,7 @@ cursor: pointer;
     align-items: center;
     justify-content: center;
 }
+
 .info_list li{
     display: flex;
     width: 100%;
@@ -201,15 +201,17 @@ cursor: pointer;
     color: white;
     text-align: center;
     box-shadow: 1px 1px 2px 1px rgb(227, 252, 4) ,
-     1px 1px 2px 1px rgb(12, 5, 5)  inset;
-cursor: default;
-
+    1px 1px 2px 1px rgb(12, 5, 5)  inset;
+    cursor: default;
 }
+
+
 .info_list li img{
     width: 30%;
     height: 95%;
     margin: 5px;
 }
+
 .info_list li:hover{
     box-shadow: 1px 1px 2px 1px rgb(227, 252, 4)inset ,
      1px 1px 2px 1px rgb(12, 5, 5) ;
@@ -425,3 +427,15 @@ color: brown;
     margin-left: 5%;
     text-align:left;
 }
+
+
+
+@media screen and (max-width: 700px) {.article { width: 48%; }}
+
+      
+      @media screen and (max-width: 555px) {
+        .article{width: 80%; }
+        .article_active{width: 95%;}
+        .close_icon{ margin-left: 350px; }
+        
+          }

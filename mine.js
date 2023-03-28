@@ -28,6 +28,10 @@
 // and
 
 
+var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+var randomIndex = Math.floor(Math.random() * colors.length);
+var randomColor = colors[randomIndex];
+
 
 function remove_active_elements(){
   
@@ -77,7 +81,57 @@ function remove_active_elements(){
 
 
 function home_content() {
+  
 
+
+  let mini_menu_list = document.getElementById('mini_menu_list');
+  let menu_btn = document.getElementById('menu_btn');
+  menu_btn.addEventListener('click',function(){
+
+    let text_slide = document.getElementById('text_slide');
+    let nav_text_slide = document.getElementById('nav_text_slide');
+
+    if(!menu_btn.classList.contains('menu_btn_active')){
+        text_slide.style.display = "none";
+        nav_text_slide.style.boxShadow = "none";
+        nav_text_slide.style.transition = "1s ease-in-out";
+        nav_text_slide.style.overflow = "visible"
+
+    
+
+
+      menu_btn.classList.remove('menu_btn');
+      menu_btn.classList.add('menu_btn_active');
+      mini_menu_list.style.opacity = "0"; 
+      mini_menu_list.style.display = "flex";
+
+
+      setTimeout(() => {
+        mini_menu_list.style.opacity = "1"; 
+      },100)
+      
+  }
+  else {
+    menu_btn.classList.remove('menu_btn_active');
+    menu_btn.classList.add('menu_btn'); 
+    mini_menu_list.style.opacity = "0";
+    mini_menu_list.style.transition= "1.5s ease-in-out";
+
+      nav_text_slide.style.boxShadow = `0.5px 0px 10px 0.5px inset ${randomColor}`;
+      nav_text_slide.style.transition = "1s ease-in-out";
+
+      setTimeout(() => { 
+      mini_menu_list.style.display = "none"; 
+
+      nav_text_slide.style.overflow = "hidden"
+
+    text_slide.style.display = "flex";
+    text_slide.style.opacity = "1";
+},1000)
+
+
+  }
+  });
 
   fetch('mine.json')
     .then(response => response.json())
@@ -433,7 +487,82 @@ function movlena(){
       "img/img (16).jpg", "img/img (15).jpg", "img/img (14).jpg", 
       "img/img (12).jpg", "img/img (11).jpg", "img/img (10).jpg", "img/img (9).jpg"
     ];
+
     
+    var line1 = "<samp class = 'txt1'>წარმოუდგენელი შეთავაზება თქვენთვის!!!</samp> <samp class = 'txt2'>თქვენთვის სასურველი 1 სტრიცონიანი ტექსტი N1</samp>"; 
+    var line2 = "<samp class = 'txt1'>წარმოუდგენელი შეთავაზება თქვენთვის!!!</samp> <samp class = 'txt2'>თქვენთვის სასურველი 1 სტრიცონიანი ტექსტი N1</samp>"; 
+    var line3 = "<samp class = 'txt1'>წარმოუდგენელი შეთავაზება თქვენთვის!!!</samp> <samp class = 'txt2'>თქვენთვის სასურველი 1 სტრიცონიანი ტექსტი N1</samp>"; 
+    var line4 = "<samp class = 'txt1'>წარმოუდგენელი შეთავაზება თქვენთვის!!!</samp> <samp class = 'txt2'>თქვენთვის სასურველი 1 სტრიცონიანი ტექსტი N1</samp>"; 
+    var line5 = "<samp class = 'txt1'>წარმოუდგენელი შეთავაზება თქვენთვის!!!</samp> <samp class = 'txt2'>თქვენთვის სასურველი 1 სტრიცონიანი ტექსტი N1</samp>"; 
+
+    var slide_text = [line1,line2,line3,line4,line5 ];
+
+    var isPaused = false;
+
+    var boxshadow = false;
+    let intervalId; 
+
+    function changeBoxShadow(nav_text_slide) {
+      if(boxshadow){
+        return;
+      }
+      let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      if (nav_text_slide.offsetWidth <= 555) {
+        nav_text_slide.style.boxShadow = `0px 7px 8px 0px inset ${randomColor}`;
+        nav_text_slide.style.transition = "box-shadow 1s ease-in-out";
+      } else {
+        nav_text_slide.style.boxShadow = "none";
+      }
+    
+      }
+    intervalId = setInterval(function() {
+
+      let nav_text_slide = document.getElementById('nav_text_slide');
+      changeBoxShadow(nav_text_slide);
+    }, 500);
+  
+    
+    for (let j = 0; j < 100; j++) {
+      setTimeout(function() {
+        if (isPaused) {
+          return; 
+        }
+        let nav_text_slide = document.getElementById('nav_text_slide');
+        let text_slide = document.createElement('div');
+        text_slide.className = "text_slide";
+        text_slide.id = "text_slide";
+        text_slide.innerHTML = slide_text[Math.floor(Math.random() * slide_text.length)];
+        setTimeout(function() {
+          text_slide.style.marginBottom = "0px";
+          text_slide.style.transition = "3s ease-in-out";
+        }, 100)
+    
+        setTimeout(function() {
+          text_slide.style.marginBottom = "60px";
+          text_slide.style.transition = "3s ease-in-out";
+          setTimeout(function() {
+            text_slide.remove();
+          }, 4000) 
+        }, 6000) 
+    
+        nav_text_slide.append(text_slide);
+      }, j * 10200);
+    }
+    
+    
+
+
+    menu_btn.addEventListener('click',function(){ 
+     
+      if(isPaused == true){isPaused = false}
+      else{isPaused = true;}
+       
+      if(boxshadow == true){boxshadow = false}
+      else{boxshadow = true;}
+      
+      
+    });
+
 
 
           for(i = 0; i < 100; i++) {
@@ -461,30 +590,16 @@ function movlena(){
                 }
               else if(slide_img_start_width <= slide_img_start_heigth){
                   slide.style.height = slide_line_heigth + "px";
-
                   slide.style.width = slide_img_start_width / sxvaoba2 + "px";
               }
             }
-
               slide.style.marginLeft = "-200px";
               slide.style.opacity = "0";
         
-              setTimeout(function() {
-                slide.style.opacity = "1";
-                slide.style.transition = "4s ease-in-out";
-              }, 50); 
-              setTimeout(function() {
-                slide.style.marginLeft = slide_line_width - 40 + "px";
-                slide.style.transition = "15s ease-in-out";
-              }, 150); 
-              setTimeout(function() {
-                slide.style.transition = "2s ease-in-out";
-                slide.style.opacity = "0";
-              }, 12000); 
-              setTimeout(function() {
-                slide.remove();
-              }, 14000); 
-        
+              setTimeout(function() { slide.style.opacity = "1"; slide.style.transition = "4s ease-in-out"; }, 50); 
+              setTimeout(function() { slide.style.marginLeft = slide_line_width - 40 + "px"; slide.style.transition = "15s ease-in-out"; }, 150); 
+              setTimeout(function() { slide.style.transition = "2s ease-in-out"; slide.style.opacity = "0"; }, 12000); 
+              setTimeout(function() { slide.remove(); }, 14000); 
               slide_line.append(slide);
             }, i * 11500); 
           }
