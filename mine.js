@@ -698,13 +698,78 @@ else if (document.querySelectorAll('.wvetebia').length > 83) {
         
         
           }
-      
-      
+
+          function gallery() {
+            fetch('mine.json')
+              .then(response => response.json())
+              .then(data => {
+                let gallery = document.getElementById('gallery');
+                let a = "gallery_element";
+                let element_width = "23%";
+                var loop = (data.Person.length / 3) - 2;
+          
+                for (let i = 0; i < loop; i++) {
+
+                  let gallery_colum = document.createElement('div');
+                  gallery_colum.className = "gallery_colum";
+          
+                  for (let j = 0; j < 3; j++) {
+                    let gallery_element = document.createElement('article');
+                    gallery_element.className = a;
+                    gallery_element.style.width = element_width;
+          
+                    let gallery_img = document.createElement('img');
+                    gallery_img.className = "gallery_img";
+                    gallery_img.src = data.Person[i * 3 + j].Image;
+          
+                    gallery_element.append(gallery_img);
+                    gallery_colum.append(gallery_element);
+          
+                    // add mouseover and mouseout event listeners
+                    gallery_element.addEventListener('mouseover', () => {
+                      gallery_element.classList.add('gallery_element_activa');
+                      gallery_img.classList.add('gallery_img_active');
+
+                    });
+                    gallery_element.addEventListener('mouseout', () => {
+                      gallery_element.classList.remove('gallery_element_activa');
+                      gallery_img.classList.remove('gallery_img_active');
+
+                    });
+          
+                    if (element_width === "23%") { element_width = "40%"; }
+                    else if (element_width === "40%") { element_width = "30%"; }
+                    else if (element_width === "30%") { element_width = "23%"; }
+                  }
+          
+                  if (element_width === "23%") { element_width = "40%"; }
+                  else if (element_width === "40%") { element_width = "30%"; }
+                  else if (element_width === "30%") { element_width = "23%"; }
+          
+                  gallery.append(gallery_colum);
+
+                  if (i > 1){
+                    gallery_colum.style.display = "none";
+                  }
+
+                  window.addEventListener('scroll', () => {
+
+                    if (window.scrollY > 300) {
+                      gallery_colum.style.display = "flex";
+                    }
+                  });
+
+                }
+              });
+          }
+          
 
 
 
+          
 
-function home_content() {
+
+          function home_content() {
 
   fetch('mine.json')
     .then(response => response.json())
@@ -999,6 +1064,18 @@ wiev_link.addEventListener('click', function(){ remove_active_elements();  movle
    });
                     //ziritadi funqciebi
                     menu_mob(); dalageba(); slide(); lamp(); user_autorise();
+
+
+
+                      // let gallery_article = document.getElementById('gallery_article');
+                      // gallery_article.addEventListener('mouseover', function(){
+                      //   gallery_article.classList.add('gallery_article');
+                      // })
+                      // gallery_article.addEventListener('mouseout', function(){
+                      //   gallery_article.classList.remove('gallery_article');
+                      // })
+                    
+                    
                     //
   }
 

@@ -5,14 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="mine.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="content.css">
+    <script src="mine.js"></script>
 
+    <style>
+.test {
+    display: none !important;
+}
+
+.content{
+    padding-top: 0px;
+}
+.gallery_text{
+    width: auto;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 0px 0px 0px 0px;
+    margin-bottom: 10px;
+
+    margin-top: 0px;
+
+    box-shadow: 0px 2px 0px 0px black;
+    transition: .5s ease-in-out;
+    margin-bottom: 10px;
+    cursor: default;
+}
+.gallery_text:hover{
+    transition: .5s ease-in-out;
+    border-radius: 0px 0px 20px 20px;
+
+    box-shadow: 0px 2px 0px 2px rgb(250, 250, 250) inset;
+    color: wheat;
+}
+
+
+
+    </style>
 </head>
-<body onload=" slide(); lamp();">
+<body onload="home_content(); gallery();">
     <header id="header">
+
         <div id="slide_line" class="slide_line"> </div>
 
+        <div id="menu_btn" class="menu_btn">
+            <div class="LN1 n1"></div> <div class="LN1 n2"></div> <div class="LN1 n3"></div>
+        </div>
 
         <div class="head_icons">
 
@@ -22,36 +60,84 @@
               <img src="img/trt.png"> 
               <img src="img/usa.png">
             </div>
-      <a href="add_post.html">
-              <div  class="user">
-                <img src="img/person.svg">
+      
+              <div  id="user_btn" class="user">
+                <img id="user_btn_img" src="img/person.svg">
               </div>
-      </a>
+      
 
-    <div name="lamp" id="lamp" class="lamp1">
+    <div id="lamp" class="lamp1">
     <img src="img/light.svg">
     </div>
-
+<style>
+</style>
+    <div id="login_form" class="login_form_active">
+        <div class="user_head">
+            <div id="login_header_text" class="login_header_text"></div>
         </div>
+     <h1>მოგესალმებათ</h1><h2>Travel in Georgia</h2>
 
-        <a href="index.html"><img  id = "logo" src="img/logo.png"></a>
+     <form  method="get"  id="login" class="login">
+        <input name="email" type="email"  placeholder="თქვენი მეილი" >
+        <input type="password" id="password" name="password"  placeholder="პაროლი">
+        <img src="img/visibility_on.svg" class="img_show_pass" aria-hidden="true" id="toggle-password"></img>
+        <div class="save_pass"><input name="save_pass" type="checkbox"><label>პაროლის დამახსოვრება</label></div>
+    </form>
+    <form style="display: none;" method="get"  id="singup" class="login singupform">
 
-<nav>
-            <ul class="contact">
-                <li><samp>rartmeladze@gmail.com</samp></li>
-                <li><samp>(+995) 595 03-56-68</samp></li>
+        <div class="container1">  <div class="rainy"></div> </div>
+        <!-- <div style="top:450px; left: 425px;" class="wvetebi"></div> -->
+        <!-- <div id="wvetebi_conteitner" class="wvetebi_conteitner">        </div> -->
+
+
+        
+        <div id="onkaki" class="onkaki"><img src="img/onkani.png"></div>
+        <div id="onkaki_cont" class="onkaki_cont"></div>
+
+
+             <input name="firstname" type="text"  placeholder="სახელი" >
+        <input name="lastname" type="text"  placeholder="გვარი" >
+        <input name="tel" type="tel" placeholder="ტელ. ნომერი" >
+        <input name="email" type="email"  placeholder="თქვენი მეილი" >
+        <input type="password" id="password_reg" name="password"  placeholder="შეიყვანე პაროლი">
+        <input type="password" id="password_reg2" name="rep_password"  placeholder="გაიმეორე პაროლი">
+    </form>
+    <div class="btns">
+                <button id="login_btn" type="submit" name="login_btn">შესვლა</button>
+                <button id="singup_btn" type="submit" name=" singup_btn">რეგისტრაცია</button>
+            </div>
+            <div class="forget_pass">
+                <a href="#"><h3>დაგავიწყდა პაროლი?</h3></a>
+            </div>
+
+    </div>
+</div>
+<script>
+
+
+</script>
+
+<a href="index.html">
+    <img  id = "logo" src="img/logo.png">
+</a>
+<nav id="nav_text_slide">
+
+    <ul class="contact">
+            <li><samp>rartmeladze@gmail.com</samp></li>
+            <li><samp>(+995) 595 03-56-68</samp></li>
+        </ul>
+
+            <ul id="mini_menu_list">
+                <a href="index.html"><li><img src="img/home.svg"><samp>მთავარი</samp></li></a>
+                <a href="gallery.html"><li><img src="img/gallery.svg"><samp>გალერია</samp></li></a>
+                <a href="news.html"><li><img src="img/feed.svg"><samp>სიახლე</samp></li></a>
+                <a href="contact.html"><li><img src="img/contacts.svg"><samp>კონტაქტი</samp></li></a>
             </ul>
-                <ul>
-                    <a href="index.html"><li><samp>მთავარი</samp></li></a>
-                    <a href="gallery.html"><li><samp>გალერია</samp></li></a>
-                    <a href="news.html"><li><samp>სიახლე</samp></li></a>
-                    <a href="contact.html"><li><samp>კონტაქტი</samp></li></a>
-                </ul>
         </nav>
     </header>
 
 <section>
-<div class="headline">
+<div class="headline" >
     <div class="dzebna">
         <input type="search" placeholder="ძებნა...">
         <img src="img/search.svg">
@@ -59,27 +145,37 @@
     <div class="dzebna">
         <img src="img/category.svg">
 
-        <select>
+        <select id="kategoria1">
     <option value="all">აირჩიე სეზონი</option>
-    <option value="N1">ზამთარი</option>
-    <option value="N2">ზაფხული</option>
+    <option value="zamtai">ზამთარი</option>
+    <option value="zafxuli">ზაფხული</option>
     </select>
 </div>
 <div class="dzebna">
     <img src="img/category.svg">
 
-        <select>
-            <option value="red">აირჩიე ლოკაცია</option>
-            <option value="red">მთა</option>
-            <option value="green">ზღვა</option>
+        <select  id="kategoria2">
+            <option value="all">აირჩიე ლოკაცია</option>
+            <option value="mta">მთა</option>
+            <option value="zgva">ზღვა</option>
         </select>
         </div>
 </div>
 
-<section id="content_gallery" class="content">
 
-<div class="soon"> გვერდი არ არის <br> დაემატებული </div>
 
+
+<section id="content" class="content">
+    <div class="gallery_text" >
+        <div class="gallery_header">Gallery</div>
+    </div>
+    
+
+
+<div id="gallery" class="gallery">
+
+
+</div>
 </section>
 </section>
 
@@ -87,8 +183,10 @@
 
 </footer>
 <script>
+
 </script>
 <script src="mine.js"></script>
 
 </body>
 </html>
+
