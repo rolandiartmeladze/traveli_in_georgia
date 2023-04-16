@@ -699,16 +699,80 @@ else if (document.querySelectorAll('.wvetebia').length > 83) {
         
           }
 
+
+
+
+
+
           function gallery() {
             fetch('mine.json')
               .then(response => response.json())
               .then(data => {
+                
                 let gallery = document.getElementById('gallery');
+                var elementebi_meore_gverdze_sawyisi = 0
+                var elementebi_meore_gverdze_bolo = 4
+
+
+
+                if (data.Person.length > 12) {
+                  var gallery_page_list = document.createElement('div');
+                  gallery_page_list.className = "gallery_page_list";
+                  
+                  var btn_next = document.createElement('div');
+                  btn_next.className = "btn_next btn";
+                  btn_next.id = "btn_next";
+                  
+                  var btn_next_img = document.createElement('img');
+                  btn_next_img.src = "img/prev.svg";
+                  
+                  var btn_prev = document.createElement('div');
+                  btn_prev.className = "btn_prev btn";
+                  
+                  var btn_prev_img = document.createElement('img');
+                  btn_prev_img.src = "img/next.svg";
+                  
+                  var btn_list_conteiner = document.createElement('div');
+                  btn_list_conteiner.className = "btn_list_conteiner";
+                  
+                  var list_style = "page_list_active";
+                  var btn_style = "btn_list_active btn";
+
+                  
+        for (var i = 0; i <= (data.Person.length / 12) -1; i++) {
+          var btn_list = document.createElement('div');
+          btn_list.className = btn_style;
+          btn_list.textContent = i + 1;
+          btn_list.id = 'btn' + i;
+          btn_list_conteiner.append(btn_list);
+
+          var page_list = document.createElement('div');
+          page_list.className = list_style;
+          gallery.append(page_list);
+
+          list_style = "page_list";
+          btn_style = "btn_list btn";
+
+
+                  
+                    
+
+
+                  btn_next.append(btn_next_img);
+                  btn_prev.append(btn_prev_img);
+                  gallery_page_list.append(btn_next, btn_list_conteiner, btn_prev);
+                
+                // page_list = document.querySelectorAll('.page_list1');
+
+
+
+                
+                    
                 let a = "gallery_element";
                 let element_width = "23%";
-                var loop = (data.Person.length / 3) - 2;
-          
-                for (let i = 0; i < loop; i++) {
+                // var loop = (data.Person.length / 3) - 2;
+
+                for (let i = elementebi_meore_gverdze_sawyisi; i < elementebi_meore_gverdze_bolo; i++) {
 
                   let gallery_colum = document.createElement('div');
                   gallery_colum.className = "gallery_colum";
@@ -725,7 +789,6 @@ else if (document.querySelectorAll('.wvetebia').length > 83) {
                     gallery_element.append(gallery_img);
                     gallery_colum.append(gallery_element);
           
-                    // add mouseover and mouseout event listeners
                     gallery_element.addEventListener('mouseover', () => {
                       gallery_element.classList.add('gallery_element_activa');
                       gallery_img.classList.add('gallery_img_active');
@@ -745,25 +808,204 @@ else if (document.querySelectorAll('.wvetebia').length > 83) {
                   if (element_width === "23%") { element_width = "40%"; }
                   else if (element_width === "40%") { element_width = "30%"; }
                   else if (element_width === "30%") { element_width = "23%"; }
-          
-                  gallery.append(gallery_colum);
 
-                  if (i > 1){
-                    gallery_colum.style.display = "none";
-                  }
 
-                  window.addEventListener('scroll', () => {
 
-                    if (window.scrollY > 300) {
-                      gallery_colum.style.display = "flex";
-                    }
-                  });
+gallery.append(page_list,gallery_page_list);
+page_list.append(gallery_colum);
+
+
 
                 }
-              });
-          }
-          
 
+
+              // var columN = 2
+              // var elementiN = 6
+
+              // let elements = document.querySelectorAll('.gallery_element');
+              // for (let i = elementiN; i < elements.length; i++) {
+              //   var element = elements[i]; element.style.display = "none"; element.style.opacity = "0"; }
+              
+              // let colums = document.querySelectorAll('.gallery_colum');
+              // for (let j = columN; j < colums.length; j++) { var colum = colums[j]; colum.style.display = "none"; }
+              
+              // window.addEventListener('scroll', () => {
+              //   if (window.scrollY > 300) {
+
+              //     for (let j = columN; j <= columN+1; j++) { colum = colums[j]; colum.style.display = "flex"; }
+
+              //     for (let i = elementiN; i <= elementiN+5; i++) {
+              //       setTimeout(() => {
+              //        element = elements[i];
+              //       element.style.display = "flex";
+              //       element.style.opacity = "1";
+              //       element.style.transition = "1.5s ease";
+              //       },i* 200);
+              //     }
+              //   }
+              //   else if (window.scrollY < 300) {
+              //   for (let j = columN; j <= columN+1; j++) { colum = colums[j]; colum.style.display = "none"; }
+              //   for (let i = elementiN; i <= elementiN+5; i++) { element = elements[i]; element.style.display = "none"; }
+                 
+              //   }           
+               
+              //   });
+
+              elementebi_meore_gverdze_sawyisi += 4;
+              elementebi_meore_gverdze_bolo += 3;
+
+
+            }    
+            
+            
+            let btns = document.querySelectorAll(".btn");
+
+
+            for (let i = 0; i < btns.length; i++) {
+              let btn = btns[i];
+
+              
+            var btn_length =btns.length;
+
+              btn.addEventListener("click", function() {
+
+
+                   if(i==btns.length -1 && !btns[i-1].classList.contains('btn_list_active'))
+                    {let activeb = btns.length; 
+                      for (let j = btns.length - 1; j > 0; j--) {
+                        let Btn_minus = btns[j];
+                      if (Btn_minus.classList.contains('btn_list_active')){
+                          activeb = j 
+                            btns[j].classList.remove('btn_list_active');
+                            btns[j].classList.add('btn_list');
+                            btns[j+1].classList.add('btn_list_active');
+                            btns[j+1].classList.remove('btn_list');
+                          }
+                      }
+                          if(i == btns.length-1  && btns[i-1].classList.contains('btn_list_active'))
+                            {btns[i].classList.add('end');
+                            btns[i].classList.remove('btn'); }
+
+                            //
+                            else if(!btns[1].classList.contains('btn_list_active')){
+                              btns[0].classList.remove('end');
+                              btns[0].classList.add('btn'); 
+                            }
+        
+                            //
+                          }
+                          
+
+
+
+               else if(i==0 && !btns[i+1].classList.contains('btn_list_active'))
+                    {let activea = 1; 
+                      for (let j = 1; j < btns.length; j++) {
+                        let Btn_minus = btns[j];
+                      if (Btn_minus.classList.contains('btn_list_active')){
+                          activea = j 
+                            btns[j].classList.remove('btn_list_active');
+                            btns[j].classList.add('btn_list');
+                            btns[j-1].classList.add('btn_list_active');
+                            btns[j-1].classList.remove('btn_list');
+
+                         }   
+                        }
+                            if(i == 0  && btns[1].classList.contains('btn_list_active'))
+                            {btns[i].classList.add('end');
+                            btns[i].classList.remove('btn'); }
+      
+
+                            //
+                            else if(!btns[4].classList.contains('btn_list_active')){
+                              btns[btn_length-1].classList.remove('end');
+                              btns[btn_length-1].classList.add('btn'); 
+                            }
+        //
+
+                    }
+
+                    else if(!btns[1].classList.contains('btn_list_active')){
+                      btns[0].classList.remove('end');
+                      btns[0].classList.add('btn'); 
+                    }
+
+                    else if(!btns[4].classList.contains('btn_list_active')){
+                      btns[btn_length-1].classList.remove('end');
+                      btns[btn_length-1].classList.add('btn'); 
+                    }
+
+
+
+
+              if(!i==0 && i != btns.length -1){
+                for (let j = 0; j < btns.length; j++) {
+                  let otherBtn = btns[j];
+
+                if (otherBtn !== btn && otherBtn.classList.contains('btn_list_active')) {
+                    otherBtn.classList.remove('btn_list_active');
+                    otherBtn.classList.add('btn_list');
+                  }
+
+                  else if (otherBtn == btn && otherBtn.classList.contains('btn_list_active')) {
+                            otherBtn.classList.remove('btn_list_active');
+                            otherBtn.classList.add('btn_list');
+                          }
+
+                }
+            
+
+
+
+                 if (btn.classList.contains('btn_list_active')) {
+                  btn.classList.remove('btn_list_active');
+                  btn.classList.add('btn_list');
+                } 
+                
+                else {
+                  btn.classList.add('btn_list_active');
+                  btn.classList.remove('btn_list');
+
+                  if(btns[1].classList.contains('btn_list_active')){
+                      btns[0].classList.add('end');
+                      btns[0].classList.remove('btn'); 
+
+                        btns[btn_length-1].classList.remove('end');
+                        btns[btn_length-1].classList.add('btn'); 
+    
+}
+            else if(btns[btn_length-2].classList.contains('btn_list_active')){
+                btns[btn_length-1].classList.add('end');
+                btns[btn_length-1].classList.remove('btn'); 
+
+                  btns[0].classList.remove('end');
+                  btns[0].classList.add('btn'); 
+                }
+              
+                else if (!btns[btn_length-2].classList.contains('btn_list_active')&& !btns[1].classList.contains('btn_list_active')){
+                  btns[btn_length-1].classList.remove('end');
+                  btns[btn_length-1].classList.add('btn'); 
+  
+                    btns[0].classList.remove('end');
+                    btns[0].classList.add('btn'); 
+   
+                }
+              }
+            }
+              });
+            
+            
+            }
+
+// Get a reference to the button element
+
+              //
+
+              }
+                     
+              
+            });
+          }
 
 
           
