@@ -2,7 +2,8 @@
 var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
 var randomIndex = Math.floor(Math.random() * colors.length);
 var randomColor = colors[randomIndex];
-
+            var aqtiuri = 0;
+            var index = 0;
 
 function remove_active_elements(){
   
@@ -328,7 +329,6 @@ function remove_active_elements(){
         });
 
         }
-
 
           function user_autorise(){
             let user_btn = document.getElementById('user_btn');
@@ -699,625 +699,821 @@ else if (document.querySelectorAll('.wvetebia').length > 83) {
         
           }
 
+            function gallery() {
+              fetch('mine.json')
+                .then(response => response.json())
+                .then(data => {
+                    
+                    let gallery = document.getElementById('gallery');
+                      var elementebi_meore_gverdze_sawyisi = 0
+                        var elementebi_meore_gverdze_bolo = 4
+
+                          if (data.gallery.length > 12) {
+                            var gallery_page_list = document.createElement('div');
+                                gallery_page_list.className = "gallery_page_list";
+                              var btn_next = document.createElement('div');
+                                  btn_next.className = "btn_next btn";
+                                  btn_next.id = "btn_next";
+                                var btn_next_img = document.createElement('img');
+                                    btn_next_img.src = "img/prev.svg";
+                                  var btn_prev = document.createElement('div');
+                                      btn_prev.className = "btn_prev btn";
+                                    var btn_prev_img = document.createElement('img');
+                                        btn_prev_img.src = "img/next.svg";
+                                      var btn_list_conteiner = document.createElement('div');
+                                          btn_list_conteiner.className = "btn_list_conteiner";
+                                        var list_style = "page_list_active";
+                                          var btn_style = "btn_list_active btn";
+                          
+                for (var i = 0; i <= (data.gallery.length / 12) -1; i++) {
+                  var btn_list = document.createElement('div');
+                      btn_list.className = btn_style;
+                      btn_list.textContent = i + 1;
+                      btn_list.id = 'btn' + i;
+
+                        btn_list_conteiner.append(btn_list);
+
+                    var page_list = document.createElement('div');
+                        page_list.className = list_style + " pages";
+
+                          gallery.append(page_list);
+
+                            list_style = "page_list";
+                            btn_style = "btn_list btn";
+
+                          btn_next.append(btn_next_img);
+                          btn_prev.append(btn_prev_img);
+                          gallery_page_list.append(btn_next, btn_list_conteiner, btn_prev);
+
+                            let a = "gallery_element";
+                              let element_width = "23%";
+
+                        // var loop = (data.gallery.length / 3) - 2;
+
+                  for (let i = elementebi_meore_gverdze_sawyisi; i < elementebi_meore_gverdze_bolo; i++) {
+
+                    let gallery_colum = document.createElement('div');
+                        gallery_colum.className = "gallery_colum";
+
+                    for (let j = 0; j < 3; j++) {
+                        let gallery_element = document.createElement('article');
+                            gallery_element.className = a;
+                            gallery_element.style.width = element_width;
+              
+                          let gallery_img = document.createElement('img');
+                              gallery_img.className = "gallery_img";
+                              gallery_img.src = data.gallery[i * 3 + j].Image;
+                
+                                gallery_element.append(gallery_img);
+                                gallery_colum.append(gallery_element);
+                
+                                  gallery_element.addEventListener('mouseover', () => {
+                                      gallery_element.classList.add('gallery_element_activa');
+                                      gallery_img.classList.add('gallery_img_active');
+                                  });
+
+                                    gallery_element.addEventListener('mouseout', () => {
+                                        gallery_element.classList.remove('gallery_element_activa');
+                                        gallery_img.classList.remove('gallery_img_active');
+                                    });
+
+
+                                    if (element_width === "23%") { element_width = "40%"; }
+                                          else if (element_width === "40%") { element_width = "30%"; }
+                                            else if (element_width === "30%") { element_width = "23%"; }
+                    }
+                                              if (element_width === "23%") { element_width = "40%"; }
+                                                else if (element_width === "40%") { element_width = "30%"; }
+                                                  else if (element_width === "30%") { element_width = "23%"; }
+
+
+
+                                                    gallery.append(page_list,gallery_page_list);
+                                                    page_list.append(gallery_colum);
+                  }
+                                                      elementebi_meore_gverdze_sawyisi += 4;
+                                                      elementebi_meore_gverdze_bolo += 4;
+                }    
+
+              let btns = document.querySelectorAll(".btn");
+                for (let i = 0; i < btns.length; i++) {
+                  let btn = btns[i];
+                    function scroll_top(){
+                      if(scroll_true){
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                        duration: 1500,
+                        easing: 'ease-in-out'
+                      }); 
+                    }               
+                      }
+                      function gadartva_btn(){
+                        var pages = document.querySelectorAll(".pages");
+                          for (let i = 0; i < pages.length; i++) { var page = pages[i];
+                            if(page.classList.contains('page_list_active')){
+                              pages[i].classList.remove('page_list_active');
+                              pages[i].classList.add('page_list');
+                            } 
+                          } 
+                            pages[i-1].classList.add('page_list_active') ;
+                        }
+                        function btn_minus_add_remove_end(){
+                          if(btns[1].classList.contains('btn_list_active')){
+                            btns[0].classList.add('end');
+                            btns[0].classList.remove('btn'); 
+                              btns[btn_length-1].classList.remove('end');
+                              btns[btn_length-1].classList.add('btn'); 
+                          }
+                          }
+                          function btn_plus_add_remove_end(){
+                            if(btns[btn_length-2].classList.contains('btn_list_active')){
+                                btns[btn_length-1].classList.add('end');
+                                btns[btn_length-1].classList.remove('btn'); 
+                
+                                  btns[0].classList.remove('end');
+                                  btns[0].classList.add('btn'); 
+                            }
+                            }
+                            function btn_select_add_remove_end(){
+                              if (!btns[btn_length-2].classList.contains('btn_list_active')&& !btns[1].classList.contains('btn_list_active')){
+                                  btns[btn_length-1].classList.remove('end');
+                                  btns[btn_length-1].classList.add('btn'); 
+                                    btns[0].classList.remove('end');
+                                    btns[0].classList.add('btn'); 
+                              }
+                              }
+                              function btns_end_add_remove(){
+                                btn_minus_add_remove_end();
+                                  btn_plus_add_remove_end();
+                                    btn_select_add_remove_end();
+                                }
+                                function btn_select(){
+                                    btn.classList.add('btn_list_active');
+                                    btn.classList.remove('btn_list');
+                                      gadartva_btn();
+                                        btns_end_add_remove();
+                                  }
+                                  function click_btn_plus_change_active_btn(){
+                                    let activeb = btns.length;
+                                    for (let j = btns.length - 1; j > 0; j--) {
+                                      let Btn_plus = btns[j];
+                                        if (Btn_plus.classList.contains('btn_list_active')){
+                                            activeb = j 
+                                            Btn_plus.classList.remove('btn_list_active');
+                                            Btn_plus.classList.add('btn_list');
+                                              btns[j+1].classList.add('btn_list_active');
+                                              btns[j+1].classList.remove('btn_list');
+
+                                              var pages = document.querySelectorAll(".pages");
+                                              for (let i = 0; i < pages.length; i++) { 
+                                                var page = pages[i];
+                                                if(page.classList.contains('page_list_active')){
+                                                  pages[j-1].classList.remove('page_list_active');
+                                                  pages[j-1].classList.add('page_list');
+                                                } 
+                                              } 
+                                                pages[j].classList.add('page_list_active') ;
+                                        }
+                                    }
+                                    }
+                                    function click_btn_minus_change_active_btn() {
+                                      let activeIndex = 0;
+                                    
+                                      for (let j = 1; j < btns.length; j++) {
+                                        let btn = btns[j];
+                                        if (btn.classList.contains('btn_list_active')) {
+                                          activeIndex = j;
+                                          btn.classList.remove('btn_list_active');
+                                          btn.classList.add('btn_list');
+                                          btns[j - 1].classList.add('btn_list_active');
+                                          btns[j - 1].classList.remove('btn_list');
+                                      }
+                                    }
+                                        var pages = document.querySelectorAll(".pages");
+                                          for (let i = 0; i < pages.length; i++) { 
+                                            var page = pages[i];
+                                            if (page.classList.contains('page_list_active')) {
+                                              pages[i].classList.remove('page_list_active');
+                                              pages[i].classList.add('page_list');
+                                              pages[i-1].classList.add('page_list_active');
+                                              pages[i-1].classList.remove('page_list');
+                                            }
+                                            }
+
+                                      }
+                                      function click_btn_plus(){
+                                        if(i==btns.length -1 && !btns[i-1].classList.contains('btn_list_active')){
+                                          click_btn_plus_change_active_btn();
+                                            if(i == btns.length-1  && btns[i-1].classList.contains('btn_list_active'))
+                                              {btns[i].classList.add('end'); btns[i].classList.remove('btn');}
+                                                else if(!btns[1].classList.contains('btn_list_active')){
+                                                  btns[0].classList.remove('end');
+                                                  btns[0].classList.add('btn'); 
+                                                }
+                                          } 
+                                        }
+                                        function click_btn_minus(){
+                                          if(i==0 && !btns[i+1].classList.contains('btn_list_active')){
+                                            click_btn_minus_change_active_btn();
+                                                  if(i == 0  && btns[1].classList.contains('btn_list_active'))
+                                                  {btns[i].classList.add('end'); btns[i].classList.remove('btn'); }
+                                                    else if(!btns[4].classList.contains('btn_list_active')){
+                                                      btns[btn_length-1].classList.remove('end');
+                                                      btns[btn_length-1].classList.add('btn'); 
+                                                    }
+                                          }
+
+
+                                          }
+
+      var btn_length = btns.length;
+        let scroll_true = true;
+        btn.addEventListener("click", function() {
+
+          if (btns[i].classList.contains('btn_list_active')){scroll_true = false;}
+            if (!btns[i].classList.contains('btn_list_active')&& scroll_true == false){scroll_true = true;}
+              if (btns[i].classList.contains('end')){scroll_true = false;}
+
+              scroll_top();
+
+
+                click_btn_plus(); click_btn_minus();
+                  if(!btns[1].classList.contains('btn_list_active')){
+                      btns[0].classList.remove('end');
+                      btns[0].classList.add('btn'); 
+                  }
+                    else if(!btns[4].classList.contains('btn_list_active')){
+                            btns[btn_length-1].classList.remove('end');
+                            btns[btn_length-1].classList.add('btn'); 
+                    }
+                      if(!i==0 && i != btns.length -1){
+                        for (let j = 0; j < btns.length; j++) {
+                          let otherBtn = btns[j];
+                            if (otherBtn !== btn && otherBtn.classList.contains('btn_list_active')) {
+                                otherBtn.classList.remove('btn_list_active');
+                                otherBtn.classList.add('btn_list'); }
+                              else if (otherBtn == btn && otherBtn.classList.contains('btn_list_active')) {
+                                        otherBtn.classList.remove('btn_list_active');
+                                        otherBtn.classList.add('btn_list'); 
+                              }
+                        }
+                                if (btn.classList.contains('btn_list_active')) {
+                                  btn.classList.remove('btn_list_active');
+                                  btn.classList.add('btn_list');
+                                } 
+                                  else {btn_select();}
+                      } 
+
+
+
+
+              });
+                        }
+                  }
+
+
+                  let element = Array.from(document.getElementsByTagName('article'));
+
+                  element.forEach((item, i) => {
+                    item.addEventListener('click', (event) => {
+                       index = i;
+                      gallery_img_player() ;
+
+                    });
+                  });
+
+                        });
+            }
+            
+              function gallery_img_player() {
+
+                fetch('mine.json')
+                  .then(response => response.json())
+                  .then(data => {
+                    document.body.style.overflow = " hidden";
+
+              var length_img = data.gallery.length -1;
+                let close_player = document.getElementById('close_player');
+                  var player_img_active = document.getElementById('player_img_active');
+                    player_img_active.src = data.gallery[index].Image;
+                    elementebis_raodenoba.textContent = index +1 + " / " + length_img;
+                      if(index >=0){
+                        let gallery_player_btn_prev = document.getElementById('gallery_player_btn_prev');
+                        let gallery_player_btn_next = document.getElementById('gallery_player_btn_next');
+
+                          gallery_player_btn_prev.addEventListener('click', ()=>{
+                            player_img_active.src = data.gallery[index-1].Image;
+                            index = (index - 1 + data.gallery.length) % data.gallery.length;
+                            elementebis_raodenoba.textContent = index +1 + " / " + length_img;
+                          })
+                            gallery_player_btn_next.addEventListener('click', ()=>{
+                              player_img_active.src = data.gallery[index+1].Image;
+                              elementebis_raodenoba.textContent = index +1 + " / " + length_img;
+                              index = (index + 1) % data.gallery.length;
+
+                            })
+                    }
+
+  let gallery_img_player = document.getElementById('gallery_img_player');
+    let wiev_full_img = document.getElementById('wiev_full_img');
+      let play_auto_slide = document.getElementById('play_auto_slide');
+        let play_icon = document.getElementById('play_icon');
+          let zoom_in = document.getElementById('zoom_in');
+            let zoom_out = document.getElementById('zoom_out');
+              let contrast = document.getElementById('contrast');
+                let download = document.getElementById('download');
+                  let gallery_head_line = document.getElementById('gallery_head_line');
+                    let timeoutId;
+                      var play = false;
+                        var timerId = null;
+                          var interval = 2500;
+                            let gallery_color = true;
+                            
+                      gallery_img_player.style.display = "flex";
+                      setTimeout(() => {
+                        gallery_img_player.style.opacity = "1";
+                        gallery_img_player.style.transition = "1.2s ease-in-out";
+                      },200);
 
 
 
 
 
-          function gallery() {
+                      var sawyisi_sigrdze = null;
+                        var sawyisi_simagle = null;
+                          var zoomin_max_sigrdze = null;
+                            // var zoomin_max_simagle = null;
+                              var zoomin_mini_sigrdze = null;
+                                // var zoomin_mini_simagle = null;
+            player_img_active.addEventListener('load', ()=>{
+              zoom_in.style.pointerEvents = "auto";
+                zoom_out.style.pointerEvents = "auto";
+              if (sawyisi_sigrdze != null && sawyisi_simagle != null) {
+                sawyisi_sigrdze = null;
+                  sawyisi_simagle = null;
+                    zoomin_max_sigrdze = null;
+                      zoomin_max_simagle = null;
+                        zoomin_mini_sigrdze = null;
+                          zoomin_mini_simagle = null;
+                }
+                if (sawyisi_sigrdze === null && sawyisi_simagle === null) {
+                  player_img_active.style.maxWidth = "100%";
+                    player_img_active.style.maxHeight = "100%";
+                      player_img_active.style.width = "auto";
+                        player_img_active.style.height = "auto";
+                  setTimeout(() => {
+                    sawyisi_sigrdze = player_img_active.offsetWidth;
+                      sawyisi_simagle = player_img_active.offsetHeight;
+                        zoomin_max_sigrdze = sawyisi_sigrdze * 4;
+                          zoomin_max_simagle = sawyisi_simagle * 4;
+                            zoomin_mini_sigrdze = sawyisi_sigrdze / 2;
+                              zoomin_mini_simagle = sawyisi_simagle / 2;
+                  });
+
+              }
+            
+            })
+        let zoom = true;
+          function zoomin(){
+            zoom_out.style.pointerEvents = "auto";
+              if(sawyisi_sigrdze > 0 && sawyisi_sigrdze < zoomin_max_sigrdze){
+              zoom = true;
+                player_img_active.style.maxWidth = "500%";
+                  player_img_active.style.maxHeight = "500%";
+                    sawyisi_sigrdze = sawyisi_sigrdze  *1.1;
+                      sawyisi_simagle = sawyisi_simagle *1.1;
+            } 
+             else {zoom = false; zoom_in.style.pointerEvents = "none"; }
+
+            
+             if(zoom){
+              
+            player_img_active.style.width = sawyisi_sigrdze +"px";
+            player_img_active.style.height = sawyisi_simagle +"px";
+          
+
+          }
+
+          }
+            function zoomout(){
+              zoom_in.style.pointerEvents = "auto";
+                if (sawyisi_sigrdze >= zoomin_mini_sigrdze) {
+                  zoom = true;
+                  sawyisi_sigrdze = sawyisi_sigrdze  /1.1;
+                    sawyisi_simagle = sawyisi_simagle /1.1;
+              } 
+              else {zoom = false; zoom_out.style.pointerEvents = "none";}
+                if(zoom){
+                  player_img_active.style.width = sawyisi_sigrdze  +'px';
+                    player_img_active.style.height = sawyisi_simagle +'px';
+                }
+            }   
+          zoom_in.addEventListener('click', zoomin);
+            zoom_out.addEventListener('click', zoomout);
+              
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                document.addEventListener('mousemove', ()=>{
+                  gallery_head_line.style.opacity = "0.8";
+                    gallery_head_line.style.transition = "0.5s ease-in-out";
+
+                      clearTimeout(timeoutId);
+                        timeoutId = setTimeout(() => {
+                          gallery_head_line.style.opacity = "0";
+                            gallery_head_line.style.transition = "0.5s ease-in-out";
+                      }, 3000);
+                  })
+
+                  close_player.addEventListener('click', () => {
+                    document.body.style.overflow = "auto";
+
+                    index = 0;
+                      gallery_img_player.style.opacity = "0";
+                      gallery_img_player.style.transition = "1.2s ease-in-out";
+                      setTimeout(() => {  gallery_img_player.style.display = "none"; },1000);
+                      if (play == true) {
+                        clearInterval(timerId);
+                        play_icon.src = "img/play.svg";
+                        play = false;
+                      }
+                    });
+                    zoom_in.addEventListener('mousemove' , ()=>{zoom_in.classList.add('g_head_icon_active');});
+                    zoom_in.addEventListener('mouseout' , ()=>{zoom_in.classList.remove('g_head_icon_active');});
+                      zoom_out.addEventListener('mousemove' , ()=>{zoom_out.classList.add('g_head_icon_active');});
+                      zoom_out.addEventListener('mouseout' , ()=>{zoom_out.classList.remove('g_head_icon_active');});
+                        wiev_full_img.addEventListener('mousemove' , ()=>{wiev_full_img.classList.add('g_head_icon_active');});
+                        wiev_full_img.addEventListener('mouseout' , ()=>{wiev_full_img.classList.remove('g_head_icon_active');});
+                          play_auto_slide.addEventListener('mousemove' , ()=>{play_auto_slide.classList.add('g_head_icon_active');});
+                          play_auto_slide.addEventListener('mouseout' , ()=>{play_auto_slide.classList.remove('g_head_icon_active');});
+                            contrast.addEventListener('mousemove' , ()=>{contrast.classList.add('g_head_icon_active');});
+                            contrast.addEventListener('mouseout' , ()=>{contrast.classList.remove('g_head_icon_active');});
+                              download.addEventListener('mousemove' , ()=>{download.classList.add('g_head_icon_active');});
+                              download.addEventListener('mouseout' , ()=>{download.classList.remove('g_head_icon_active');});
+                               
+                              play_auto_slide.addEventListener('click', () => {
+                                if (play == false) {
+                                  play_icon.src = "img/pause.svg";
+                                  timerId = setInterval(() => {
+                                      player_img_active.src = data.gallery[index].Image;
+                                    elementebis_raodenoba.textContent = index + 1 + " / " + length_img;
+                                    index = (index + 1) % data.gallery.length;
+                                  }, interval);
+                                  play = true;
+                                } else if (play == true) {
+                                  clearInterval(timerId);
+                                  play_icon.src = "img/play.svg";
+                                  play = false;
+                                }
+                              });
+
+
+                              contrast.addEventListener('click', ()=>{
+                                    let contrast_icon = document.getElementById('contrast_icon');
+                                      if(gallery_color){
+                                        contrast_icon.style.transform = `rotate(180deg)`; 
+                                        gallery_img_player.style.backgroundColor = "#CCCCCC";
+                                        gallery_color = false;
+                                      } 
+                                        else {
+                                          contrast_icon.style.transform = `rotate(0deg)`; 
+                                          gallery_img_player.style.backgroundColor = "rgb(38, 41, 39)";
+                                          gallery_color = true;
+                                        }
+                                    });
+
+      
+              });
+
+
+              }
+
+                function showFullScreen() {
+
+                  var elem = document.getElementById("player_img_active");
+                  if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                  } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                  } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                  } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                  }
+                }
+
+                    function home_content() {
+
             fetch('mine.json')
               .then(response => response.json())
               .then(data => {
-                
-                let gallery = document.getElementById('gallery');
-                var elementebi_meore_gverdze_sawyisi = 0
-                var elementebi_meore_gverdze_bolo = 4
 
+                  data.Person.forEach(person => {
 
+          let content = document.getElementById("content");
+            let article = document.createElement('article');
+              article.className = "article" +" "+ person.Email;
 
-                if (data.Person.length > 12) {
-                  var gallery_page_list = document.createElement('div');
-                  gallery_page_list.className = "gallery_page_list";
-                  
-                  var btn_next = document.createElement('div');
-                  btn_next.className = "btn_next btn";
-                  btn_next.id = "btn_next";
-                  
-                  var btn_next_img = document.createElement('img');
-                  btn_next_img.src = "img/prev.svg";
-                  
-                  var btn_prev = document.createElement('div');
-                  btn_prev.className = "btn_prev btn";
-                  
-                  var btn_prev_img = document.createElement('img');
-                  btn_prev_img.src = "img/next.svg";
-                  
-                  var btn_list_conteiner = document.createElement('div');
-                  btn_list_conteiner.className = "btn_list_conteiner";
-                  
-                  var list_style = "page_list_active";
-                  var btn_style = "btn_list_active btn";
+            let content_img = document.createElement('img');
+                content_img.className = "content_img";
 
-                  
-        for (var i = 0; i <= (data.Person.length / 12) -1; i++) {
-          var btn_list = document.createElement('div');
-          btn_list.className = btn_style;
-          btn_list.textContent = i + 1;
-          btn_list.id = 'btn' + i;
-          btn_list_conteiner.append(btn_list);
+              var kategoria = document.createElement('div');
+                  kategoria.className = "kategoria";
 
-          var page_list = document.createElement('div');
-          page_list.className = list_style;
-          gallery.append(page_list);
+                let kategoria_img = document.createElement('img');
+                    kategoria_img.className = "kategoria_img";
+                    kategoria_img.src= "img/category.svg";
 
-          list_style = "page_list";
-          btn_style = "btn_list btn";
+                  let kategoria_txt = document.createElement('samp');
+                      kategoria_txt.id = "kategoria_txt";
+                      kategoria_txt.textContent = "სეზონი/ლოკაცია";
 
+                    var article_info = document.createElement('div');
+                        article_info.className = "article_info";
 
-                  
-                    
+                      let time = document.createElement('div');
+                          time.className = "time";
 
+                        let time_img = document.createElement('img');
+                            time_img.className = "time_img";
+                            time_img.src = "img/time.svg";
 
-                  btn_next.append(btn_next_img);
-                  btn_prev.append(btn_prev_img);
-                  gallery_page_list.append(btn_next, btn_list_conteiner, btn_prev);
-                
-                // page_list = document.querySelectorAll('.page_list1');
+                          let time_txt = document.createElement('samp');
+                              time_txt.className = "time_txt";
 
+                            let view = document.createElement('div');
+                                view.className = "view";
 
+                              let view_txt = document.createElement('samp');
+                                  view_txt.className = "view_txt";
+                                  view_txt.textContent = "290";
 
-                
-                    
-                let a = "gallery_element";
-                let element_width = "23%";
-                // var loop = (data.Person.length / 3) - 2;
+                                let view_img = document.createElement('img');
+                                    view_img.className = "view_img";
+                                    view_img.src = "img/favorit1.svg";
 
-                for (let i = elementebi_meore_gverdze_sawyisi; i < elementebi_meore_gverdze_bolo; i++) {
+                                    var name = document.createElement('h2');
+                                      name.className = "name";
 
-                  let gallery_colum = document.createElement('div');
-                  gallery_colum.className = "gallery_colum";
-          
-                  for (let j = 0; j < 3; j++) {
-                    let gallery_element = document.createElement('article');
-                    gallery_element.className = a;
-                    gallery_element.style.width = element_width;
-          
-                    let gallery_img = document.createElement('img');
-                    gallery_img.className = "gallery_img";
-                    gallery_img.src = data.Person[i * 3 + j].Image;
-          
-                    gallery_element.append(gallery_img);
-                    gallery_colum.append(gallery_element);
-          
-                    gallery_element.addEventListener('mouseover', () => {
-                      gallery_element.classList.add('gallery_element_activa');
-                      gallery_img.classList.add('gallery_img_active');
+                                      var agwera = document.createElement('h3');
+                                      agwera.className = "agwera";
 
-                    });
-                    gallery_element.addEventListener('mouseout', () => {
-                      gallery_element.classList.remove('gallery_element_activa');
-                      gallery_img.classList.remove('gallery_img_active');
+                                      var wiev_link = document.createElement('div');
+                                          wiev_link.className ="wiev_link";
 
-                    });
-          
-                    if (element_width === "23%") { element_width = "40%"; }
-                    else if (element_width === "40%") { element_width = "30%"; }
-                    else if (element_width === "30%") { element_width = "23%"; }
-                  }
-          
-                  if (element_width === "23%") { element_width = "40%"; }
-                  else if (element_width === "40%") { element_width = "30%"; }
-                  else if (element_width === "30%") { element_width = "23%"; }
-
-
-
-gallery.append(page_list,gallery_page_list);
-page_list.append(gallery_colum);
-
-
-
-                }
-
-
-              // var columN = 2
-              // var elementiN = 6
-
-              // let elements = document.querySelectorAll('.gallery_element');
-              // for (let i = elementiN; i < elements.length; i++) {
-              //   var element = elements[i]; element.style.display = "none"; element.style.opacity = "0"; }
-              
-              // let colums = document.querySelectorAll('.gallery_colum');
-              // for (let j = columN; j < colums.length; j++) { var colum = colums[j]; colum.style.display = "none"; }
-              
-              // window.addEventListener('scroll', () => {
-              //   if (window.scrollY > 300) {
-
-              //     for (let j = columN; j <= columN+1; j++) { colum = colums[j]; colum.style.display = "flex"; }
-
-              //     for (let i = elementiN; i <= elementiN+5; i++) {
-              //       setTimeout(() => {
-              //        element = elements[i];
-              //       element.style.display = "flex";
-              //       element.style.opacity = "1";
-              //       element.style.transition = "1.5s ease";
-              //       },i* 200);
-              //     }
-              //   }
-              //   else if (window.scrollY < 300) {
-              //   for (let j = columN; j <= columN+1; j++) { colum = colums[j]; colum.style.display = "none"; }
-              //   for (let i = elementiN; i <= elementiN+5; i++) { element = elements[i]; element.style.display = "none"; }
-                 
-              //   }           
-               
-              //   });
-
-              elementebi_meore_gverdze_sawyisi += 4;
-              elementebi_meore_gverdze_bolo += 3;
-
-
-            }    
-            
-            
-            let btns = document.querySelectorAll(".btn");
-
-
-            for (let i = 0; i < btns.length; i++) {
-              let btn = btns[i];
-
-              
-            var btn_length =btns.length;
-
-              btn.addEventListener("click", function() {
-
-
-                   if(i==btns.length -1 && !btns[i-1].classList.contains('btn_list_active'))
-                    {let activeb = btns.length; 
-                      for (let j = btns.length - 1; j > 0; j--) {
-                        let Btn_minus = btns[j];
-                      if (Btn_minus.classList.contains('btn_list_active')){
-                          activeb = j 
-                            btns[j].classList.remove('btn_list_active');
-                            btns[j].classList.add('btn_list');
-                            btns[j+1].classList.add('btn_list_active');
-                            btns[j+1].classList.remove('btn_list');
-                          }
-                      }
-                          if(i == btns.length-1  && btns[i-1].classList.contains('btn_list_active'))
-                            {btns[i].classList.add('end');
-                            btns[i].classList.remove('btn'); }
-
-                            //
-                            else if(!btns[1].classList.contains('btn_list_active')){
-                              btns[0].classList.remove('end');
-                              btns[0].classList.add('btn'); 
-                            }
-        
-                            //
-                          }
-                          
-
-
-
-               else if(i==0 && !btns[i+1].classList.contains('btn_list_active'))
-                    {let activea = 1; 
-                      for (let j = 1; j < btns.length; j++) {
-                        let Btn_minus = btns[j];
-                      if (Btn_minus.classList.contains('btn_list_active')){
-                          activea = j 
-                            btns[j].classList.remove('btn_list_active');
-                            btns[j].classList.add('btn_list');
-                            btns[j-1].classList.add('btn_list_active');
-                            btns[j-1].classList.remove('btn_list');
-
-                         }   
-                        }
-                            if(i == 0  && btns[1].classList.contains('btn_list_active'))
-                            {btns[i].classList.add('end');
-                            btns[i].classList.remove('btn'); }
-      
-
-                            //
-                            else if(!btns[4].classList.contains('btn_list_active')){
-                              btns[btn_length-1].classList.remove('end');
-                              btns[btn_length-1].classList.add('btn'); 
-                            }
-        //
-
-                    }
-
-                    else if(!btns[1].classList.contains('btn_list_active')){
-                      btns[0].classList.remove('end');
-                      btns[0].classList.add('btn'); 
-                    }
-
-                    else if(!btns[4].classList.contains('btn_list_active')){
-                      btns[btn_length-1].classList.remove('end');
-                      btns[btn_length-1].classList.add('btn'); 
-                    }
-
-
-
-
-              if(!i==0 && i != btns.length -1){
-                for (let j = 0; j < btns.length; j++) {
-                  let otherBtn = btns[j];
-
-                if (otherBtn !== btn && otherBtn.classList.contains('btn_list_active')) {
-                    otherBtn.classList.remove('btn_list_active');
-                    otherBtn.classList.add('btn_list');
-                  }
-
-                  else if (otherBtn == btn && otherBtn.classList.contains('btn_list_active')) {
-                            otherBtn.classList.remove('btn_list_active');
-                            otherBtn.classList.add('btn_list');
-                          }
-
-                }
-            
-
-
-
-                 if (btn.classList.contains('btn_list_active')) {
-                  btn.classList.remove('btn_list_active');
-                  btn.classList.add('btn_list');
-                } 
-                
-                else {
-                  btn.classList.add('btn_list_active');
-                  btn.classList.remove('btn_list');
-
-                  if(btns[1].classList.contains('btn_list_active')){
-                      btns[0].classList.add('end');
-                      btns[0].classList.remove('btn'); 
-
-                        btns[btn_length-1].classList.remove('end');
-                        btns[btn_length-1].classList.add('btn'); 
-    
-}
-            else if(btns[btn_length-2].classList.contains('btn_list_active')){
-                btns[btn_length-1].classList.add('end');
-                btns[btn_length-1].classList.remove('btn'); 
-
-                  btns[0].classList.remove('end');
-                  btns[0].classList.add('btn'); 
-                }
-              
-                else if (!btns[btn_length-2].classList.contains('btn_list_active')&& !btns[1].classList.contains('btn_list_active')){
-                  btns[btn_length-1].classList.remove('end');
-                  btns[btn_length-1].classList.add('btn'); 
-  
-                    btns[0].classList.remove('end');
-                    btns[0].classList.add('btn'); 
-   
-                }
-              }
-            }
-              });
-            
-            
-            }
-
-// Get a reference to the button element
-
-              //
-
-              }
-                     
-              
-            });
-          }
-
-
-          
-
-
-          function home_content() {
-
-  fetch('mine.json')
-    .then(response => response.json())
-    .then(data => {
-
-        data.Person.forEach(person => {
-
-let content = document.getElementById("content");
-  let article = document.createElement('article');
-    article.className = "article" +" "+ person.Email;
-
-  let content_img = document.createElement('img');
-      content_img.className = "content_img";
-
-    var kategoria = document.createElement('div');
-        kategoria.className = "kategoria";
-
-      let kategoria_img = document.createElement('img');
-          kategoria_img.className = "kategoria_img";
-          kategoria_img.src= "img/category.svg";
-
-        let kategoria_txt = document.createElement('samp');
-            kategoria_txt.id = "kategoria_txt";
-            kategoria_txt.textContent = "სეზონი/ლოკაცია";
-
-          var article_info = document.createElement('div');
-              article_info.className = "article_info";
-
-            let time = document.createElement('div');
-                time.className = "time";
-
-              let time_img = document.createElement('img');
-                  time_img.className = "time_img";
-                  time_img.src = "img/time.svg";
-
-                let time_txt = document.createElement('samp');
-                    time_txt.className = "time_txt";
-
-                  let view = document.createElement('div');
-                      view.className = "view";
-
-                    let view_txt = document.createElement('samp');
-                        view_txt.className = "view_txt";
-                        view_txt.textContent = "290";
-
-                      let view_img = document.createElement('img');
-                          view_img.className = "view_img";
-                          view_img.src = "img/favorit1.svg";
-
-                          var name = document.createElement('h2');
-                            name.className = "name";
-
-                            var agwera = document.createElement('h3');
-                            agwera.className = "agwera";
-
-                            var wiev_link = document.createElement('div');
-                                wiev_link.className ="wiev_link";
-
-                                  let wiev_img = document.createElement('img');
-                                  wiev_img.src = "img/view.svg";
-                  
-              
-            agwera.textContent = person.Username;
-            content_img.src = person.Image;
-            name.textContent = person.Name;
-            time_txt.textContent = person.Datetime;
-
-            
-            let articles = document.getElementsByClassName("article");
-            for (let i = 0; i < articles.length; i++) {
-              let article = articles[i];
-                          let articleWidth = article.offsetWidth;
-                              article.style.height = articleWidth + 40 + "px";
-      
-                var wiev_link = document.createElement('div');
-                    wiev_link.className ="wiev_link";
-      
-                    var wiev_link_text = document.createElement('samp');
-                    wiev_link_text.className = "wiev_link_text";
-                    wiev_link_text.textContent = "ჩვენება"
-      
-                      let wiev_img = document.createElement('img');
-                          wiev_img.src = "img/view.svg";
-      
-                          var close_btn = document.createElement('div');
-                          close_btn.className = "close_icon";
-                          close_btn.style.display = "none";
-              
-                                var close_img = document.createElement('img');
-                                close_img.src = "img/close.svg";
-                   
-            }
-      
-
-function movlena(){
-
-  article.classList.remove('article');
-  article.classList.add("article_active");
-            
-    setTimeout(() => {
-
-      var shefaseba_div = document.createElement('div');
-      var shefaseba_txt = document.createElement('h1');
-    
-    
-      var info_list = document.createElement('ul');
-      
-      var info_list_l1 = document.createElement('li');
-      var info_list_l1_img =  document.createElement('img');
-          info_list_l1_img.src = "img/dro.svg";
-          var info_list_l1_div =  document.createElement('div');
-          info_list_l1_div.textContent = "3 დღე.";
-    
-    
-          var info_list_l2 = document.createElement('li');
-          var info_list_l2_img =  document.createElement('img');
-              var info_list_l2_div =  document.createElement('div');
-    
-    
-    
-              var info_list_l3 = document.createElement('li');
-              var info_list_l3_img =  document.createElement('img');
-                  var info_list_l3_div =  document.createElement('div');
-                  var info_list_l3_samp =  document.createElement('samp');
-    
-    
-    
-                  var info_list_l4 = document.createElement('li');
-                  var info_list_l4_img =  document.createElement('img');
-                      var info_list_l4_div =  document.createElement('div');
-                      var info_list_l4_samp =  document.createElement('samp');
-                      
-    
-                          var info_list_l5 = document.createElement('li');
-                          var info_list_l5_img =  document.createElement('img');
-    
-                          var info_list_l5_btn1 =  document.createElement('button');
-    
-                          var info_list_l5_input =  document.createElement('input');
-    
-                          var info_list_l5_btn2 =  document.createElement('button');
-    
-                            var info_list_l6 = document.createElement('li');
-                            var info_list_l6_btn3 =  document.createElement('button');
-    
-
-
-
-
-      close_btn.style.display = "flex";
-      
-        shefaseba_div.className ="shefaseba_div";
-        shefaseba_div.id ="shefaseba_div";
-
-          shefaseba_txt.className = "shefaseba_txt";
-          shefaseba_txt.textContent = "4+";
-
-            info_list.className = "info_list";
-            info_list.id = "info_list";     
-
-              info_list_l1_img.src = "img/dro.svg";
-              info_list_l1_div.textContent = "3 დღე.";
-
-                info_list_l2_img.src = "img/fasi.svg";
-                info_list_l2_div.textContent = 550 +" ₾";
-                info_list_l2_div.className = "cheked";
-                info_list_l2_div.id = "fasi";
-
-                  info_list_l3_img.src = "img/transporti.svg";
-                  info_list_l3_div.className = "cheked";
-                  info_list_l3_samp.className = "item";
-
-                    info_list_l4_img.src = "img/kveda.svg";
-                    info_list_l4_div.className = "cheked";
-                    info_list_l4_samp.className = "item";
-                                        
-                      info_list_l5.className = "raodenoba";
-                      info_list_l5_img.src = "img/raodenoba.svg";
-
-                        info_list_l5_btn1.id = "mateba";
-                        info_list_l5_btn1.className ="mateba";
-                        info_list_l5_btn1.textContent = "+";
-
-                          info_list_l5_input.id = "raodenoba_txt";
-                          info_list_l5_input.type = "text";
-                          info_list_l5_input.value = "1";
-
-                            info_list_l5_btn2.id = "kleba";
-                            info_list_l5_btn2.textContent = "-";
-
-                              info_list_l6_btn3.className = "dajavshna";
-                              info_list_l6_btn3.id = "dajavshna";
-                              info_list_l6_btn3.textContent = "დაჯავშნა";
-                                  
-
-
-
-                              info_list_l5_btn1.addEventListener('click', function(){
-                                info_list_l5_input.value ++;
-                                let raodenoba = info_list_l5_input.value;
-                                if(raodenoba >=11){
-                                  alert("ამ მოდულიდან შეიძლება მხოლოდ 10 პერსონაზე დაჯავშნა, სხვა შემთხვევაში დაგვიკავშირდეით (+995) 595 03-56-68");
-                                  info_list_l5_input.value = "10";
-                                  let raodenoba = info_list_l5_input.value;
-                                  info_list_l2_div.textContent = raodenoba * 550 +" ₾";
-                                }
-                                else{
-                                  info_list_l2_div.textContent = raodenoba * 550 +" ₾";
-                                      }
-
-
-                              });
-
-                                  info_list_l5_btn2.addEventListener('click', function(){
-                                    info_list_l5_input.value --;
-                                    let raodenoba = info_list_l5_input.value;
-
-                                    if(raodenoba <=0){
-                                      alert("მნიშვნელობა უნდა იყოს მინიმუმ 1");
-                                      info_list_l5_input.value = "1";
-                                      let raodenoba = info_list_l5_input.value;
-                                      info_list_l2_div.textContent = raodenoba * 550 +" ₾";
-                                    }
-                                    else{
-                                    info_list_l2_div.textContent = raodenoba * 550 +" ₾";
-                                        }
-                                  });
-
-                                     info_list_l5_input.addEventListener('change', function(){
-                                      let raodenoba = info_list_l5_input.value;
-
-                                      if(raodenoba <=0){
-                                        alert("გთხოვთ შეიყვანოთ 0-სგან განსხვავებული დადებითი რიცხვი");
-                                        info_list_l5_input.value = "1";
-                                      }
-                                      else if (raodenoba >=11) {
-                                        alert("ამ მოდულიდან შეიძლება მხოლოდ 10 პერსონაზე დაჯავშნა, სხვა შემთხვევაში დაგვიკავშირდეით (+995) 595 03-56-68");
-                                        info_list_l5_input.value = "10";
-                                        let raodenoba = info_list_l5_input.value;
-                                        info_list_l2_div.textContent = raodenoba*550 +" ₾";
-                                      }
-                                      else{ info_list_l2_div.textContent = raodenoba * 550 +" ₾";}
-    
-
-                                     })
-
-
-                          
-
-    agwera.classList.remove("agwera");
-    agwera.classList.add("agwera_active");
-    name.classList.add("name_active");
-    article_info.classList.add('article_info_active');
-    kategoria.classList.add('kategoria_active');
-
-      info_list_l3_div.append(info_list_l3_samp);
-      info_list_l4_div.append(info_list_l4_samp);
-      info_list_l1.append(info_list_l1_img,info_list_l1_div);
-      info_list_l2.append(info_list_l2_img,info_list_l2_div);
-      info_list_l3.append(info_list_l3_img,info_list_l3_div);
-      info_list_l4.append(info_list_l4_img,info_list_l4_div);
-      info_list_l5.append(info_list_l5_img,info_list_l5_btn1,info_list_l5_input,info_list_l5_btn2)
-      info_list_l6.append(info_list_l6_btn3);
-      
-        info_list.append(info_list_l1,info_list_l2,info_list_l3,info_list_l4,info_list_l5,info_list_l6);
-        shefaseba_div.append(shefaseba_txt);
-        article.append( wiev_link,shefaseba_div,content_img,info_list,kategoria,article_info,name,agwera);
+                                            let wiev_img = document.createElement('img');
+                                            wiev_img.src = "img/view.svg";
+                            
                         
-          wiev_link.style.display="none";
+                      agwera.textContent = person.Username;
+                      content_img.src = person.Image;
+                      name.textContent = person.Name;
+                      time_txt.textContent = person.Datetime;
 
-  }, 1500);
+                      
+                      let articles = document.getElementsByClassName("article");
+                      for (let i = 0; i < articles.length; i++) {
+                        let article = articles[i];
+                            let articleWidth = article.offsetWidth;
+                                article.style.height = articleWidth + 40 + "px";
+                
+                          var wiev_link = document.createElement('div');
+                              wiev_link.className ="wiev_link";
+                
+                              var wiev_link_text = document.createElement('samp');
+                              wiev_link_text.className = "wiev_link_text";
+                              wiev_link_text.textContent = "ჩვენება"
+                
+                                let wiev_img = document.createElement('img');
+                                    wiev_img.src = "img/view.svg";
+                
+                                    var close_btn = document.createElement('div');
+                                    close_btn.className = "close_icon";
+                                    close_btn.style.display = "none";
+                        
+                                          var close_img = document.createElement('img');
+                                          close_img.src = "img/close.svg";
+                            
+                      }
+                
 
-  
-}           
+          function movlena(){
+
+            article.classList.remove('article');
+            article.classList.add("article_active");
+                      
+              setTimeout(() => {
+
+                var shefaseba_div = document.createElement('div');
+                var shefaseba_txt = document.createElement('h1');
+              
+              
+                var info_list = document.createElement('ul');
+                
+                var info_list_l1 = document.createElement('li');
+                var info_list_l1_img =  document.createElement('img');
+                    info_list_l1_img.src = "img/dro.svg";
+                    var info_list_l1_div =  document.createElement('div');
+                    info_list_l1_div.textContent = "3 დღე.";
+              
+              
+                    var info_list_l2 = document.createElement('li');
+                    var info_list_l2_img =  document.createElement('img');
+                        var info_list_l2_div =  document.createElement('div');
+              
+              
+              
+                        var info_list_l3 = document.createElement('li');
+                        var info_list_l3_img =  document.createElement('img');
+                            var info_list_l3_div =  document.createElement('div');
+                            var info_list_l3_samp =  document.createElement('samp');
+              
+              
+              
+                            var info_list_l4 = document.createElement('li');
+                            var info_list_l4_img =  document.createElement('img');
+                                var info_list_l4_div =  document.createElement('div');
+                                var info_list_l4_samp =  document.createElement('samp');
+                                
+              
+                                    var info_list_l5 = document.createElement('li');
+                                    var info_list_l5_img =  document.createElement('img');
+              
+                                    var info_list_l5_btn1 =  document.createElement('button');
+              
+                                    var info_list_l5_input =  document.createElement('input');
+              
+                                    var info_list_l5_btn2 =  document.createElement('button');
+              
+                                      var info_list_l6 = document.createElement('li');
+                                      var info_list_l6_btn3 =  document.createElement('button');
+              
 
 
-      close_btn.append(close_img);
-      wiev_link.append(wiev_img,wiev_link_text);
-      time.append(time_img,time_txt);
-      view.append(view_txt,view_img);
-      article_info.append(time,view);
-      kategoria.append(kategoria_img,kategoria_txt);
-      article.append(wiev_link,close_btn,content_img,kategoria,article_info,name);
-      content.append(article);
-        
-article.addEventListener('mouseover', function(){ wiev_link_text.style.display = "flex";  wiev_link.classList.remove('wiev_link');  wiev_link.classList.add('wiev_link_active'); })
-article.addEventListener('mouseout', function(){ wiev_link.classList.add('wiev_link'); wiev_link.classList.remove('wiev_link_active'); })
-close_btn.addEventListener('click', function(){ remove_active_elements(); wiev_link.style.display="flex"; });
-wiev_link.addEventListener('click', function(){ remove_active_elements();  movlena(); });
-
-});
-   });
-                    //ziritadi funqciebi
-                    menu_mob(); dalageba(); slide(); lamp(); user_autorise();
 
 
+                close_btn.style.display = "flex";
+                
+                  shefaseba_div.className ="shefaseba_div";
+                  shefaseba_div.id ="shefaseba_div";
 
-                      // let gallery_article = document.getElementById('gallery_article');
-                      // gallery_article.addEventListener('mouseover', function(){
-                      //   gallery_article.classList.add('gallery_article');
-                      // })
-                      // gallery_article.addEventListener('mouseout', function(){
-                      //   gallery_article.classList.remove('gallery_article');
-                      // })
-                    
-                    
-                    //
-  }
+                    shefaseba_txt.className = "shefaseba_txt";
+                    shefaseba_txt.textContent = "4+";
+
+                      info_list.className = "info_list";
+                      info_list.id = "info_list";     
+
+                        info_list_l1_img.src = "img/dro.svg";
+                        info_list_l1_div.textContent = "3 დღე.";
+
+                          info_list_l2_img.src = "img/fasi.svg";
+                          info_list_l2_div.textContent = 550 +" ₾";
+                          info_list_l2_div.className = "cheked";
+                          info_list_l2_div.id = "fasi";
+
+                            info_list_l3_img.src = "img/transporti.svg";
+                            info_list_l3_div.className = "cheked";
+                            info_list_l3_samp.className = "item";
+
+                              info_list_l4_img.src = "img/kveda.svg";
+                              info_list_l4_div.className = "cheked";
+                              info_list_l4_samp.className = "item";
+                                                  
+                                info_list_l5.className = "raodenoba";
+                                info_list_l5_img.src = "img/raodenoba.svg";
+
+                                  info_list_l5_btn1.id = "mateba";
+                                  info_list_l5_btn1.className ="mateba";
+                                  info_list_l5_btn1.textContent = "+";
+
+                                    info_list_l5_input.id = "raodenoba_txt";
+                                    info_list_l5_input.type = "text";
+                                    info_list_l5_input.value = "1";
+
+                                      info_list_l5_btn2.id = "kleba";
+                                      info_list_l5_btn2.textContent = "-";
+
+                                        info_list_l6_btn3.className = "dajavshna";
+                                        info_list_l6_btn3.id = "dajavshna";
+                                        info_list_l6_btn3.textContent = "დაჯავშნა";
+                                            
+
+
+
+                                        info_list_l5_btn1.addEventListener('click', function(){
+                                          info_list_l5_input.value ++;
+                                          let raodenoba = info_list_l5_input.value;
+                                          if(raodenoba >=11){
+                                            alert("ამ მოდულიდან შეიძლება მხოლოდ 10 პერსონაზე დაჯავშნა, სხვა შემთხვევაში დაგვიკავშირდეით (+995) 595 03-56-68");
+                                            info_list_l5_input.value = "10";
+                                            let raodenoba = info_list_l5_input.value;
+                                            info_list_l2_div.textContent = raodenoba * 550 +" ₾";
+                                          }
+                                          else{info_list_l2_div.textContent = raodenoba * 550 +" ₾";}
+                                        });
+
+                                          info_list_l5_btn2.addEventListener('click', function(){
+                                            info_list_l5_input.value --;
+                                            let raodenoba = info_list_l5_input.value;
+
+                                            if(raodenoba <=0){
+                                              alert("მნიშვნელობა უნდა იყოს მინიმუმ 1");
+                                              info_list_l5_input.value = "1";
+                                              let raodenoba = info_list_l5_input.value;
+                                              info_list_l2_div.textContent = raodenoba * 550 +" ₾";
+                                            }
+                                            else{info_list_l2_div.textContent = raodenoba * 550 +" ₾";}
+                                          });
+
+                                              info_list_l5_input.addEventListener('change', function(){
+                                              let raodenoba = info_list_l5_input.value;
+
+                                              if(raodenoba <=0){
+                                                alert("გთხოვთ შეიყვანოთ 0-სგან განსხვავებული დადებითი რიცხვი");
+                                                info_list_l5_input.value = "1";
+                                              }
+                                              else if (raodenoba >=11) {
+                                                alert("ამ მოდულიდან შეიძლება მხოლოდ 10 პერსონაზე დაჯავშნა, სხვა შემთხვევაში დაგვიკავშირდეით (+995) 595 03-56-68");
+                                                info_list_l5_input.value = "10";
+                                                let raodenoba = info_list_l5_input.value;
+                                                info_list_l2_div.textContent = raodenoba*550 +" ₾";
+                                              }
+                                              else{info_list_l2_div.textContent = raodenoba * 550 +" ₾";}
+            
+
+                                              })
+
+
+                                    
+
+              agwera.classList.remove("agwera");
+              agwera.classList.add("agwera_active");
+              name.classList.add("name_active");
+              article_info.classList.add('article_info_active');
+              kategoria.classList.add('kategoria_active');
+
+                info_list_l3_div.append(info_list_l3_samp);
+                info_list_l4_div.append(info_list_l4_samp);
+                info_list_l1.append(info_list_l1_img,info_list_l1_div);
+                info_list_l2.append(info_list_l2_img,info_list_l2_div);
+                info_list_l3.append(info_list_l3_img,info_list_l3_div);
+                info_list_l4.append(info_list_l4_img,info_list_l4_div);
+                info_list_l5.append(info_list_l5_img,info_list_l5_btn1,info_list_l5_input,info_list_l5_btn2)
+                info_list_l6.append(info_list_l6_btn3);
+                
+                  info_list.append(info_list_l1,info_list_l2,info_list_l3,info_list_l4,info_list_l5,info_list_l6);
+                  shefaseba_div.append(shefaseba_txt);
+                  article.append( wiev_link,shefaseba_div,content_img,info_list,kategoria,article_info,name,agwera);
+                                  
+                    wiev_link.style.display="none";
+
+            }, 1500);
+
+            
+          }           
+
+
+                close_btn.append(close_img);
+                wiev_link.append(wiev_img,wiev_link_text);
+                time.append(time_img,time_txt);
+                view.append(view_txt,view_img);
+                article_info.append(time,view);
+                kategoria.append(kategoria_img,kategoria_txt);
+                article.append(wiev_link,close_btn,content_img,kategoria,article_info,name);
+                content.append(article);
+                  
+          article.addEventListener('mouseover', function(){ wiev_link_text.style.display = "flex";  wiev_link.classList.remove('wiev_link');  wiev_link.classList.add('wiev_link_active'); })
+          article.addEventListener('mouseout', function(){ wiev_link.classList.add('wiev_link'); wiev_link.classList.remove('wiev_link_active'); })
+          close_btn.addEventListener('click', function(){ remove_active_elements(); wiev_link.style.display="flex"; });
+          wiev_link.addEventListener('click', function(){ remove_active_elements();  movlena(); });
+
+          });
+            });
+                              //ziritadi funqciebi
+                                menu_mob(); 
+                                  slide(); 
+                                    lamp(); 
+                                      user_autorise();
+                              //
+                    }
 

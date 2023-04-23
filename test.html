@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Viewer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ezoom/dist/ezoom.min.css">
+</head>
+<body>
+
+  <div id="image-container">
+    <img src="img/img (19).jpg" width="300" alt="Image 1">
+    <img src="img/img (16).jpg" alt="Image 2">
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ezoom/dist/ezoom.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#image-container').ezoom({
+        height: 600,
+        width: 800,
+        zoom: 1.5,
+        zoomMax: 4,
+        gallery: true,
+        galleryActiveClass: 'active',
+        galleryItemSelector: '#image-container img'
+      });
+    });
+  </script>
+</body>
+</html>

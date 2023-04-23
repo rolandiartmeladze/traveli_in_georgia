@@ -10,40 +10,61 @@
     <script src="mine.js"></script>
 
     <style>
-.test {
-    display: none !important;
-}
+.test { display: none !important; }
 
-.content{
-    padding-top: 0px;
-}
-.gallery_text{
-    width: auto;
-    display: inline-block;
-    padding: 6px;
-    border-radius: 0px 0px 0px 0px;
-    margin-bottom: 10px;
+.content{ padding-top: 0px; }
 
-    margin-top: 0px;
-
-    box-shadow: 0px 2px 0px 0px black;
-    transition: .5s ease-in-out;
-    margin-bottom: 10px;
-    cursor: default;
-}
-.gallery_text:hover{
-    transition: .5s ease-in-out;
-    border-radius: 0px 0px 20px 20px;
-
-    box-shadow: 0px 2px 0px 2px rgb(250, 250, 250) inset;
-    color: wheat;
-}
 
 
 
     </style>
 </head>
 <body onload="home_content(); gallery()">
+
+
+    <div id="gallery_img_player" class="gallery_img_player"> 
+        
+        <div class="elementebis_raodenoba" id="elementebis_raodenoba"></div>
+        <button id="close_player" class="close_player"><img src="img/close.svg"></button>
+
+        <div id="gallery_head_line" class="gallery_head_line">
+            <div class="gallery_head_icons">
+                <div class="g_head_icon" id="wiev_full_img"  onclick="showFullScreen();"><img src="img/fullscreen.svg"></div>
+                    <div class="g_head_icon" id="play_auto_slide"><img id="play_icon" src="img/play.svg"></div>
+                        <div class="g_head_icon" id="zoom_in"><img src="img/zoom_in.svg"></div>
+                            <div class="g_head_icon" id="zoom_out"><img src="img/zoom_out.svg"></div>
+                                <div class="g_head_icon" id="contrast"><img id="contrast_icon" src="img/contrast.svg"></div>
+                                    <div class="g_head_icon" id="download"><img src="img/download.svg"></div>
+    
+            </div>
+        
+
+
+        </div>
+
+
+
+        <div class="gallery_player_btn_prev gallery_player_btn" id="gallery_player_btn_prev">
+
+            <img src="img/prev.svg">
+
+        </div>
+
+                <div class="gallery_img_conteiner" id="gallery_img_conteiner">
+
+                    <img  class="player_img_active" id="player_img_active" src="">
+
+                </div>
+
+        <div class="gallery_player_btn_next gallery_player_btn" id="gallery_player_btn_next">
+
+            <img src="img/next.svg">
+        
+        </div>
+
+
+    </div>
+
     <header id="header">
 
         <div id="slide_line" class="slide_line"> </div>
@@ -112,10 +133,6 @@
 
     </div>
 </div>
-<script>
-
-
-</script>
 
 <a href="index.html">
     <img  id = "logo" src="img/logo.png">
@@ -171,7 +188,6 @@
     </div>
     
 
-
 <div id="gallery" class="gallery"> 
     <!-- <div class="gallery_page_list">
         
@@ -185,6 +201,10 @@
 
         <div class="btn_prev btn"><img src="img/next.svg"></div>
 </div> -->
+
+
+
+
 </div>
 </section>
 </section>

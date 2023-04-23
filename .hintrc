@@ -21,6 +21,9 @@
       {
         "aria-allowed-attr": "off"
       }
-    ]
+    ],
+    "axe/name-role-value": "off",
+    "meta-charset-utf-8": "off",
+    "meta-viewport": "off"
   }
 }
